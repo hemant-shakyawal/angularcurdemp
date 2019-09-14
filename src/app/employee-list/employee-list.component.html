@@ -1,0 +1,36 @@
+
+<div class='container'>
+<div> <a routerLink="create-employee" class="btn btn-primary active" role="button" routerLinkActive="active">Add</a>
+</div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h1>Employees</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Employee name</th>
+                    <th>Employee Salery</th>
+                    <th>employee_age</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees | async | paginate: { itemsPerPage: 15, currentPage: p }">
+                    <td>{{employee.employee_name}}</td>
+                    <td>{{employee.employee_salary}}</td>
+                    <td>{{employee.employee_age}}</td>
+                    <!-- <td><button (click)="deleteEmployee(employee.id)">Delete</button></td> -->
+
+                </tr>
+  <tr><td colspan=3><pagination-controls (pageChange)="p = $event"></pagination-controls></td> </tr>
+            </tbody>
+        </table>
+    </div>
+
+  </div>
+
+</div>
+
